@@ -1,7 +1,7 @@
 {
   "name": "sdq-scoring",
   "version": "0.1.0",
-  "homepage": "https://prebollargs.github.io/sdq-scoring",
+  "homepage": "https://prebollar15.github.io/sdq-scoring/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
