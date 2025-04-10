@@ -46,19 +46,38 @@ form {
   color: #555;
 }
 
-button[type="submit"] {
-  margin-top: 20px;
+.button-container {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  justify-content: center;
+}
+
+button[type="submit"],
+.start-over-button {
   padding: 10px 20px;
-  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
 }
 
 button[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+.start-over-button {
+  background-color: #dc3545;
+}
+
+.start-over-button:hover {
+  background-color: #c82333;
 }
 
 .error-message {

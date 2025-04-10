@@ -20,6 +20,14 @@ function Form() {
     setProfile(e.target.value);
   };
 
+  const handleStartOver = () => {
+    setAnswers({});
+    setScore({});
+    setError(null);
+    setProfile('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (Object.keys(answers).length !== questions.length) {
@@ -66,7 +74,10 @@ function Form() {
 
       {error && <p className="error-message">{error}</p>}
 
-      <button type="submit">Submit</button>
+      <div className="button-container">
+        <button type="submit">Submit</button>
+        <button type="button" onClick={handleStartOver} className="start-over-button">Start Over</button>
+      </div>
 
       {Object.keys(score).length > 0 && (
         <div className="score-container">
