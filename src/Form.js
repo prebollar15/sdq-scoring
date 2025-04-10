@@ -65,47 +65,66 @@ function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ProfileSelector
-        profile={profile}
-        onProfileChange={handleProfileChange}
-      />
-
-      {questions.map((question) => (
-        <Question
-          key={question.num}
-          question={question}
-          onChange={handleChange}
-          value={answers[question.question]}
-          isError={showErrors && !isQuestionAnswered(question)}
-        />
-      ))}
-
-      {error && <p className="error-message">{error}</p>}
-
-      <div className="button-container">
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleStartOver} className="start-over-button">Start Over</button>
+    <div className="form-wrapper">
+      <div className="form-header">
+        <h1>SDQ Scoring Calculator</h1>
+        <div className="form-description">
+          <p>
+            Scoring the Strengths & Difficulties Questionnaire for age 4-17
+          </p>
+          <p>
+            The 25 items in the SDQ comprise 5 scales of 5 items each. It is usually easiest to score all 5
+            scales first before working out the total difficulties score. 'Somewhat True' is always scored as
+            1, but the scoring of 'Not True' and 'Certainly True' varies with the item, as shown below scale
+            by scale. For each of the 5 scales the score can range from 0 to 10 if all items were completed.
+            These scores can be scaled up pro-rata if at least 3 items were completed, e.g. a score of 4
+            based on 3 completed items can be scaled up to a score of 7 (6.67 rounded up) for 5 items.
+          </p>
+        </div>
       </div>
 
-      {Object.keys(score).length > 0 && (
-        <div className="score-container">
-          <h2>Assessment Results</h2>
-          <div className="profile-info">
-            <span className="profile-label">Profile:</span>
-            <span className="profile-value">{profile}</span>
-          </div>
-          <div className="score-grid">
-            {Object.entries(score).map(([category, value]) => (
-              <div key={category} className="score-item">
-                <span className="score-label">{formatCategoryName(category)}</span>
-                <span className="score-value">{value}</span>
-              </div>
-            ))}
-          </div>
+      <form onSubmit={handleSubmit}>
+        <ProfileSelector
+          profile={profile}
+          onProfileChange={handleProfileChange}
+        />
+
+        {questions.map((question) => (
+          <Question
+            key={question.num}
+            question={question}
+            onChange={handleChange}
+            value={answers[question.question]}
+            isError={showErrors && !isQuestionAnswered(question)}
+          />
+        ))}
+
+        {error && <p className="error-message">{error}</p>}
+
+        <div className="button-container">
+          <button type="submit">Submit</button>
+          <button type="button" onClick={handleStartOver} className="start-over-button">Start Over</button>
         </div>
-      )}
-    </form>
+
+        {Object.keys(score).length > 0 && (
+          <div className="score-container">
+            <h2>Assessment Results</h2>
+            <div className="profile-info">
+              <span className="profile-label">Profile:</span>
+              <span className="profile-value">{profile}</span>
+            </div>
+            <div className="score-grid">
+              {Object.entries(score).map(([category, value]) => (
+                <div key={category} className="score-item">
+                  <span className="score-label">{formatCategoryName(category)}</span>
+                  <span className="score-value">{value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </form>
+    </div>
   );
 }
 
