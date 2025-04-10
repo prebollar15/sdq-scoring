@@ -10,6 +10,7 @@ function Form() {
   const [score, setScore] = useState({});
   const [error, setError] = useState(null);
   const [profile, setProfile] = useState('');
+  const [showErrors, setShowErrors] = useState(false);
 
   const handleChange = (e, question) => {
     const newAnswers = { ...answers, [question]: e.target.value };
@@ -25,6 +26,7 @@ function Form() {
     setScore({});
     setError(null);
     setProfile('');
+    setShowErrors(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -32,6 +34,7 @@ function Form() {
     e.preventDefault();
     if (Object.keys(answers).length !== questions.length) {
       setError("Please answer all questions before submitting");
+      setShowErrors(true);
       return;
     }
     if (!profile) {
@@ -39,6 +42,7 @@ function Form() {
       return;
     }
     setError(null);
+    setShowErrors(false);
 
     const newScore = calculateScore(answers, questions);
     setScore(newScore);
@@ -56,6 +60,10 @@ function Form() {
     return categoryMap[category] || category;
   };
 
+  const isQuestionAnswered = (question) => {
+    return answers[question.question] !== undefined;
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <ProfileSelector
@@ -69,6 +77,7 @@ function Form() {
           question={question}
           onChange={handleChange}
           value={answers[question.question]}
+          isError={showErrors && !isQuestionAnswered(question)}
         />
       ))}
 
@@ -82,6 +91,10 @@ function Form() {
       {Object.keys(score).length > 0 && (
         <div className="score-container">
           <h2>Assessment Results</h2>
+          <div className="profile-info">
+            <span className="profile-label">Profile:</span>
+            <span className="profile-value">{profile}</span>
+          </div>
           <div className="score-grid">
             {Object.entries(score).map(([category, value]) => (
               <div key={category} className="score-item">

@@ -204,4 +204,39 @@ button[type="submit"]:hover {
   padding: 0.5rem 1rem;
   background-color: #f8f9fa;
   border-radius: 4px;
+}
+
+.question-container.error-state {
+  border-color: #dc3545;
+  background-color: #fff5f5;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.profile-label {
+  font-weight: 600;
+  color: #4a5568;
+  margin-right: 0.5rem;
+}
+
+.profile-value {
+  font-weight: 600;
+  color: #007bff;
+  text-transform: capitalize;
 } 
