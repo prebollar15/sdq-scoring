@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# SDQ Scoring Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based application for administering and scoring the Strengths and Difficulties Questionnaire (SDQ). The SDQ is a behavioral screening questionnaire that provides a balanced view of children's psychological attributes.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Interactive questionnaire with 25 questions
+- Multiple profile types (Student, Parent, Teacher)
+- Automatic scoring calculation
+- Category-based scoring with formatted display:
+  - Prosocial Behavior
+  - Hyperactivity
+  - Emotional Problems
+  - Conduct Problems
+  - Peer Problems
+  - Total Difficulty Score
+- Modern, responsive UI with clear visual hierarchy
+- Form validation and error handling
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+src/
+├── components/
+│   ├── ProfileSelector.js    # Profile selection component
+│   └── Question.js          # Individual question component
+├── data/
+│   └── questions.js         # Question data and options
+├── utils/
+│   └── scoreCalculator.js   # Scoring calculation logic
+├── Form.js                  # Main form component
+└── Form.css                 # Styling for form and components
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup
 
-### `npm test`
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+1. Select a profile type (Student, Parent, or Teacher)
+2. Answer all 25 questions by selecting one of three options:
+   - Not True (0 points)
+   - Somewhat True (1 point)
+   - Certainly True (2 points)
+3. Submit the form to view the assessment results
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Scoring System
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application calculates scores for different behavioral categories:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Prosocial Behavior**: Measures positive social interactions
+- **Hyperactivity**: Assesses activity levels and attention
+- **Emotional Problems**: Evaluates emotional well-being
+- **Conduct Problems**: Measures behavioral issues
+- **Peer Problems**: Assesses social relationships
+- **Total Difficulty**: Sum of all scores except Prosocial
 
-### `npm run eject`
+Note: Some questions have reversed scoring (0,1,2 → 2,1,0) to maintain consistency in the assessment.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## UI Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Clean, modern design with consistent spacing
+- Responsive layout that works on all devices
+- Clear visual hierarchy for questions and options
+- Formatted score display with category names
+- Error handling for incomplete submissions
+- Interactive form elements with hover states
+- Accessible form controls
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Development
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The application is built with:
+- React (Functional components with hooks)
+- Modern JavaScript (ES6+)
+- CSS3 with Flexbox and Grid
+- Component-based architecture
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
